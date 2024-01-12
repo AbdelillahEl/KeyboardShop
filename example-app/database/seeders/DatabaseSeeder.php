@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 120,
                 'switches'=> 'Mx Brown lightweight Switches',  
                 'details'=> 'The "Mechanical Keyboard" is a flagship product that redefines your typing experience. Crafted with precision, it features high-quality mechanical switches that offer a tactile and audible feedback. The customizable RGB lighting allows you to set the mood of your workspace, with millions of color options to choose from. This keyboard is not just a tool; its a statement of your commitment to excellence in every keystroke.',
-                'image' => 'mechanical_keyboard.jpg',
+                'image' => 'no-image.png',
             ]
          );
          Keyboard::create(
@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 50,
                 'switches'=> 'Mx Brown lightweight Switches',  
                 'details'=> 'Embrace the future of connectivity with our Wireless Bluetooth Keyboard. This compact and portable keyboard seamlessly pairs with your mobile devices and laptops via Bluetooth technology. Its ergonomic design ensures comfortable typing even during extended use. Enjoy the freedom of typing from anywhere, whether you are in a coffee shop or your cozy home office.',
-                'image' => 'wireless_keyboard.jpg',
+                'image' => 'no-image.png',
             ]
          );
          Keyboard::create(
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 150,
                 'switches'=> 'Mx Brown lightweight Switches',  
                 'details'=>'Gamers, meet your new best friend: the Gaming Keyboard. Engineered for precision and performance, it features anti-ghosting technology, ensuring that every keystroke is registered accurately, no matter how fast you play. Take control of your gaming experience with customizable macros and immerse yourself in the world of RGB backlighting.',
-                'image' => 'gaming_keyboard.jpg',
+                'image' => 'no-image.png',
             ]
          );
          Keyboard::create(
@@ -60,7 +60,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 80,
                 'switches'=> 'Mx Brown lightweight Switches',  
                 'details'=>'The Ergonomic Split Keyboard is designed with your comfort in mind. Say goodbye to wrist strain and hello to a keyboard that supports your natural hand position. The split layout reduces tension, while cushioned palm rests provide a soft landing for your hands. Typing has never felt this good.',
-                'image' => 'ergonomic_keyboard.jpg',
+                'image' => 'no-image.png',
             ]
          );
          Keyboard::create(
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
                 'price' => 100,
                 'switches'=> 'Mx Brown lightweight Switches',  
                 'details'=>'Efficiency meets elegance in our Compact Mechanical Keyboard. The tenkeyless design saves valuable desk space, making it perfect for minimalist workspaces. Its tactile mechanical switches deliver a satisfying click with each keystroke, enhancing your typing speed and accuracy. This keyboard is a testament to form and function.',
-                'image' => 'compact_mechanical_keyboard.jpg',
+                'image' => 'no-image.png',
             ]
          );
          Keyboard::create([
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
             'price' => 180,
             'switches'=> 'Mx Brown lightweight Switches',  
             'details'=>'Step into the future of gaming with the RGB Gaming Mechanical Keyboard. It is not just a keyboard; it is an immersive experience. Customize every aspect, from key switches to lighting effects, and set the stage for epic gaming sessions. Elevate your gaming setup with this powerhouse of a keyboard.',
-            'image' => 'rgb_gaming_keyboard.jpg',
+            'image' => 'no-image.png',
         ]);
          Keyboard::create([
             'id' => 7,
@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
             'price' => 90,
             'switches'=> 'Mx Brown lightweight Switches',  
             'details'=>'Experience the best of both worlds with our Compact Wireless Mechanical Keyboard. It combines the tactile satisfaction of mechanical switches with the convenience of wireless connectivity. Say goodbye to cable clutter and hello to productivity on the go. Stay connected, stay efficient.',
-            'image' => 'compact_wireless_mechanical_keyboard.jpg',
+            'image' => 'no-image.png',
         ]);
          Keyboard::create([
             'id' => 8,
@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
             'price' => 70,
             'switches'=> 'Mx Brown lightweight Switches',  
             'details'=>'The Backlit Multimedia Keyboard is your multitasking companion. Whether you are crunching numbers or enjoying your favorite multimedia, this keyboard has you covered. The backlit keys make typing a breeze in any lighting condition, and the dedicated multimedia control buttons put entertainment at your fingertips.',
-            'image' => 'backlit_multimedia_keyboard.jpg',
+            'image' => 'no-image.png',
         ]);
          Keyboard::create([
             'id' => 9,
@@ -108,7 +108,7 @@ class DatabaseSeeder extends Seeder
             'price' => 110,
             'switches'=> 'Mx Brown lightweight Switches', 
             'details'=>'Silence is bliss with the Silent Typing Keyboard. Perfect for shared workspaces and late-night projects, it offers a whisper-quiet typing experience. The low-profile keys and advanced noise-dampening technology ensure that you type in stealth mode without disturbing those around you.', 
-            'image' => 'silent_typing_keyboard.jpg',
+            'image' => 'no-image.png',
         ]);
          Keyboard::create([
             'id' => 10,
@@ -117,7 +117,7 @@ class DatabaseSeeder extends Seeder
             'price' => 160,
             'switches'=> 'Mx Brown lightweight Switches',  
             'details'=>'Dominate the gaming arena with the Wireless Mechanical Gaming Keyboard. Its low-latency wireless connection and customizable key switches give you the edge you need to crush the competition. Elevate your gaming prowess with this precision-engineered keyboard designed for victory.',
-            'image' => 'wireless_mechanical_gaming_keyboard.jpg',
+            'image' => 'no-image.png',
         ]);
 
     }

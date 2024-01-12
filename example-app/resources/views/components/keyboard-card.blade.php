@@ -3,9 +3,7 @@
     <div class="flex">
         <img
             class="hidden w-48 mr-6 md:block"
-            src="
-            {{ asset('images/no-image.png') }}
-            "
+            src="{{ $keyboard->image ? asset('images/' . $keyboard->image) : asset('images/no-image.png') }}"
 
             alt="keyboard-image"
         />

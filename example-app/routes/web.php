@@ -17,14 +17,21 @@ use App\Models\Keyboard;
 
 Route::get('/', [KeyboardController::class, 'index']);
 
+// Show Create Form
+
+Route::get('/keyboard/create', [KeyboardController::class, 'create']);
+
+
+// Store Keyboard
+Route::post('/keyboard', [KeyboardController::class, 'store']);
+
+
+
+
+
+
+
+
+
 // Single Keyboard
 Route::get('/keyboard/{keyboard}', [KeyboardController::class, 'show']);
-Route::get('/about', function () {
-    return view('about');
-});
-Route::get('/contact', function () {
-    return view('contact');
-});
-Route::get('/post', function () {
-    return view('post');
-});

@@ -16,12 +16,13 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('price');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('switches');
             $table->timestamps();
             $table->longText('details');
         });
     }
+
 
     /**
      * Reverse the migrations.
