@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Keyboard extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'description', 'price', 'switches', 'details', 'image'];
+    protected $fillable = ['title','user_id','description', 'price', 'switches', 'details', 'image'];
     public function scopeFilter($query, array $filters)
     {
         if($filters['search'] ?? false){
@@ -17,5 +17,9 @@ class Keyboard extends Model
         }
     }
 
-
+    //Relationship To User
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -18,10 +18,13 @@ class DatabaseSeeder extends Seeder
          \App\Models\User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            
          ]);
+        
          Keyboard::create(
             [
                 'id' => 1,
+                'user_id' => 11,
                 'title' => 'Mechanical Keyboard',
                 'description' => 'High-quality mechanical keyboard with customizable RGB lighting.',
                 'price' => 120,
@@ -33,6 +36,7 @@ class DatabaseSeeder extends Seeder
          Keyboard::create(
             [
                 'id' => 2,
+                'user_id' => 11,
                 'title' => 'Wireless Bluetooth Keyboard',
                 'description' => 'Compact wireless Bluetooth keyboard for mobile devices and laptops.',
                 'price' => 50,
@@ -44,6 +48,8 @@ class DatabaseSeeder extends Seeder
          Keyboard::create(
             [
                 'id' => 3,
+                'user_id' => 11,
+                
                 'title' => 'Gaming Keyboard',
                 'description' => 'Gaming keyboard with anti-ghosting, customizable macros, and RGB backlighting.',
                 'price' => 150,
@@ -55,6 +61,7 @@ class DatabaseSeeder extends Seeder
          Keyboard::create(
             [
                 'id' => 4,
+                'user_id' => 11,
                 'title' => 'Ergonomic Split Keyboard',
                 'description' => 'Ergonomic split keyboard for comfortable typing and Mx Brown lightweight Switchesuced strain.',
                 'price' => 80,
@@ -66,6 +73,7 @@ class DatabaseSeeder extends Seeder
          Keyboard::create(
             [
                 'id' => 5,
+                'user_id' => 11,
                 'title' => 'Compact Mechanical Keyboard',
                 'description' => 'Compact mechanical keyboard with tenkeyless design and tactile switches.',
                 'price' => 100,
@@ -76,6 +84,7 @@ class DatabaseSeeder extends Seeder
          );
          Keyboard::create([
             'id' => 6,
+            'user_id' => 11,
             'title' => 'RGB Gaming Mechanical Keyboard',
             'description' => 'Feature-packed RGB gaming mechanical keyboard with customizable switches.',
             'price' => 180,
@@ -85,6 +94,7 @@ class DatabaseSeeder extends Seeder
         ]);
          Keyboard::create([
             'id' => 7,
+            'user_id' => 11,
             'title' => 'Compact Wireless Mechanical Keyboard',
             'description' => 'Compact wireless mechanical keyboard with long battery life.',
             'price' => 90,
@@ -94,6 +104,7 @@ class DatabaseSeeder extends Seeder
         ]);
          Keyboard::create([
             'id' => 8,
+            'user_id' => 11,
             'title' => 'Backlit Multimedia Keyboard',
             'description' => 'Multimedia keyboard with backlit keys and multimedia control buttons.',
             'price' => 70,
@@ -103,6 +114,7 @@ class DatabaseSeeder extends Seeder
         ]);
          Keyboard::create([
             'id' => 9,
+            'user_id' => 11,
             'title' => 'Silent Typing Keyboard',
             'description' => 'Silent typing keyboard with quiet switches for noise-sensitive environments.',
             'price' => 110,
@@ -112,6 +124,7 @@ class DatabaseSeeder extends Seeder
         ]);
          Keyboard::create([
             'id' => 10,
+            'user_id' => 11,
             'title' => 'Wireless Mechanical Gaming Keyboard',
             'description' => 'Wireless mechanical gaming keyboard with low-latency connectivity.',
             'price' => 160,
