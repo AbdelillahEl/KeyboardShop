@@ -5,6 +5,7 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Keyboard;
 use Illuminate\Database\Seeder;
+use App\Models\Faq;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,10 +17,76 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
 
          \App\Models\User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'name' => 'Admin', 
+            'email' => 'admin@ehb.be',
+            'password' => bcrypt('Password!321'), 
+            'role' => 'admin',
             
          ]);
+         Faq::create([
+            
+                'id' => 1,
+                'question' => 'What types of keyboards do you offer?',
+                'answer' => 'We offer a wide range of keyboards, including mechanical, membrane, gaming, and ergonomic keyboards to suit various preferences.',
+         ]);
+         Faq::create([
+            
+                'id' => 2,
+                'question' => 'Can I customize the key switches on my mechanical keyboard?',
+                'answer' => 'Yes, many of our mechanical keyboards allow you to choose from different key switch options, such as Cherry MX, Razer, and more.',
+         ]);
+         Faq::create([
+        
+                'id' => 3,
+                'question' => 'Do you provide warranty for your keyboards?',
+                'answer' => 'Absolutely! All our keyboards come with a standard warranty. Please check the product details for specific warranty information.',
+         ]);
+         Faq::create([
+            
+                'id' => 4,
+                'question' => 'Are the keyboards compatible with Mac and Windows operating systems?',
+                'answer' => 'Yes, the majority of our keyboards are compatible with both Mac and Windows operating systems. Check the product specifications for detailed compatibility information.',
+         ]);
+         Faq::create([
+            
+                'id' => 5,
+                'question' => 'How do I clean my keyboard?',
+                'answer' => 'To clean your keyboard, we recommend using a can of compressed air to remove dust between the keys. For deeper cleaning, you can use a keycap puller and isopropyl alcohol. Always disconnect the keyboard before cleaning.',
+         ]);
+         Faq::create([
+            
+                'id' => 6,
+                'question' => 'Can I return a keyboard if I\'m not satisfied with it?',
+                'answer' => 'Yes, we have a hassle-free return policy. If you\'re not satisfied with your purchase, you can return it within a specified period for a refund or exchange. Check our return policy for more details.',
+         ]);
+         Faq::create([
+            
+                'id' => 7,
+                'question' => 'Are there any discounts for bulk orders?',
+                'answer' => 'Yes, we offer discounts for bulk orders. Contact our customer support for personalized assistance and pricing for bulk purchases.',
+         ]);
+         Faq::create([
+            
+                'id' => 8,
+                'question' => 'How can I track my order?',
+                'answer' => 'Once your order is shipped, you will receive a tracking number via email. You can use this tracking number to monitor the status and location of your package.',
+         ]);
+         Faq::create([
+            
+                'id' => 9,
+                'question' => 'Do you offer international shipping?',
+                'answer' => 'Yes, we offer international shipping. Shipping costs and delivery times vary depending on the destination. Please check our shipping information for details.',
+         ]);
+         Faq::create([
+            
+                'id' => 10,
+                'question' => 'Can I get technical support for my keyboard?',
+                'answer' => 'Absolutely! If you encounter any technical issues or need assistance with your keyboard, our customer support team is available to help. Contact us via email or phone for prompt assistance.',
+         ]);
+         
+
+        
+        
         
          Keyboard::create(
             [

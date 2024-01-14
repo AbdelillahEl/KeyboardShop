@@ -21,6 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'bio', 
+        'birthdate', 
+        'profilepicture',
     ];
 
     /**
@@ -32,9 +35,15 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+    
 
-    /**
-     * The attributes that should be cast.
+    //admin and normal user
+    
+    const ROLE_ADMIN = 'admin';
+    const ROLE_USER = 'user';
+
+
+    /* * The attributes that should be cast.
      *
      * @var array<string, string>
      */

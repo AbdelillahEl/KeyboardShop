@@ -41,13 +41,12 @@
                                     class="block bg-black text-white py-2 rounded-xl hover:opacity-80"
                                     ><i class="fa-solid fa-shopping-cart"></i> 
                                     Buy Now
-                                    </a
-                                >
+                            </a>
                                 <a
-                                    href="mailto:keycrafters@test.com"
+                                    href="/contact"
                                     class="block bg-laravel text-white mt-6 py-2 rounded-xl hover:opacity-80"
                                     ><i class="fa-solid fa-envelope"></i>
-                                    Contact Seller</a
+                                    Contact Seller/Admin </a
                                 >
 
                                 
@@ -55,6 +54,7 @@
                         </div>
                     </div>
                 </x-card>
+                @if(auth()->check() && auth()->user()->role == \App\Models\User::ROLE_ADMIN)
                 <x-card class="mt-4 p-2 flex space-x-6">
                     <a href="/keyboard/{{$keyboard->id}}/edit">
                     <i class="fa-solid fa-pencil"></i> Edit
@@ -66,5 +66,6 @@
                         <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
                     </form>
                 </x-card>
+                @endif
             </div>
 </x-layout>

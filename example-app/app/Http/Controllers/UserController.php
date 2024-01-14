@@ -12,7 +12,58 @@ class UserController extends Controller
     {
         return view('users.register');
     }
+    //Show Profile Page
+    public function profile(User $user)
+    {
+        return view('users.profile', [
+            'user' => $user
+        ]);
+    }
 
+    //Show Edit Page
+    public function edit(User $user)
+    {
+        return view('users.profile-edit', [
+            'user' => $user
+        ]);
+    }
+
+    //Update Profile
+    public function update(User $user, Request $request)
+    {
+        $formFields= $request->validate([
+            'name' => ['required','min:3' ,'max:27'],
+            'email' => ['email', 'required', Rule::unique('users', 'email')->ignore($user->id)],
+            'password' => 'required|min:6',
+            'profilepicture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+            'bio' => 'nullable',
+            'birthdate' => 'nullable',
+        ]);
+
+        if($request->hasFile('profilepicture')){
+            $profilepicture = $request->file('profilepicture');
+            $extension = $profilepicture->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $profilepicture->move(public_path('images'), $filename);
+        } else {
+            
+            $filename = $user->profilepicture;
+            
+        
+        $formFields['password']=bcrypt($formFields['password']);
+
+        User::where('id', $user	->id)->update([ 
+            'name' => $formFields['name'],
+            'email' => $formFields['email'],
+            'password' => $formFields['password'],
+            'bio' => $formFields['bio'],
+            'birthdate' => $formFields['birthdate'],
+            'profilepicture' => $filename,
+            
+        ]);
+       return redirect('/')->with('message', 'Profile updated successfully!');
+    }
+    }
     //Create New User
     public function store(Request $request)
     {
@@ -27,7 +78,10 @@ class UserController extends Controller
         $user=User::create([
             'name' => $formfield['name'],
             'email' => $formfield['email'],
-            'password' => $formfields['password']
+            'password' => $formfields['password'],
+            'bio' =>'About me' ,
+            'birthdate' => now('Europe/London')->format('Y-m-d H:i:s'),
+            'image' =>"no-image.png",
 
 
         ]
@@ -59,6 +113,7 @@ class UserController extends Controller
         $formfield= $request->validate([
             'email' => ['required', 'email'],
             'password' => 'required'
+        
         ]);
         if (auth()->attempt($formfield)) {
             $request->session()->regenerate();

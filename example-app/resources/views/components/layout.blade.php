@@ -40,12 +40,25 @@
                     
                    <span class="font-bold mr-2 uppercase">Welcome {{auth()->user()->name}}</span>
                 </li>
-
+                <li>
+                    <a href="/faq" class="hover:text-laravel">
+                        <i class="fa-solid fa-circle-question"></i>
+                        FAQ
+                    </a>
+                    
+                </li>
+                @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN)
                 <li>
                     <a href="/keyboard/manage" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
-                       Manage Keyboards</a
+                       Manage Keyboards and Contact Messages</a
                     >
+                </li>
+                @endif
+                <li>
+                    <a href="/profile/{{auth()->user()->id}}" class="hover:text-laravel">
+                        <i class="fa-solid fa-user"></i> Profile
+                    </a>
                 </li>
                 <li>
                     <form class="inline" method="POST" action="/logout">

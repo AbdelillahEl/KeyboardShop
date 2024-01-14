@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Keyboard;
 use Illuminate\Http\Request;
 
@@ -119,15 +120,18 @@ class KeyboardController extends Controller
 
 
     //Delete Keyboard
-    public function destroy(Keyboard $keyboard){
+    public function destroyKeyboard(Keyboard $keyboard)
+    {
         $keyboard->delete();
-        return redirect('/')->with('message', 'Keyboard deleted successfully!');
+        return redirect('/')->with('message', 'Keyboard Deleted Successfully');
     }
-
 
     //Manage Keyboards
     public function manage(){
-        return view('keyboards.manage', ['keyboards' => auth()->user()->keyboards()->get()]);
+        
+        return view('keyboards.manage', ['keyboards' => auth()->user()->keyboards()->get(),
+        'contacts' => Contact::all(),
+    ]);
     }   
 
 }
