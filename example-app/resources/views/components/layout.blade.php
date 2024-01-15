@@ -35,10 +35,9 @@
                 ><img class="w-24" src=" {{ asset ('images/logo.png')}}" alt="" class="logo"
             /></a>
             <ul class="flex space-x-6 mr-6 text-lg">
-                @auth
                 <li>
-                    
-                   <span class="font-bold mr-2 uppercase">Welcome {{auth()->user()->name}}</span>
+                    <a href="/about" class="hover:text-laravel">
+                        <i class="fa-solid fa-info"></i> About</a>
                 </li>
                 <li>
                     <a href="/faq" class="hover:text-laravel">
@@ -47,6 +46,14 @@
                     </a>
                     
                 </li>
+                
+                @auth
+                <li>
+                    
+                   <span class="font-bold mr-2 uppercase">Welcome {{auth()->user()->name}}</span>
+                </li>
+                
+                
                 @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN)
                 <li>
                     <a href="/keyboard/manage" class="hover:text-laravel"

@@ -15,6 +15,7 @@
     <p>
         {{$faq->answer}}
     </p>
+    @auth
     @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN)
     <x-card class="mt-4 p-2">
         <div class="flex space-x-6 items-end">
@@ -32,6 +33,7 @@
             </form>
         </div>
     </x-card>
+    @endauth
 @endif
 
    </x-card>

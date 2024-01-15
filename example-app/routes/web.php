@@ -43,6 +43,10 @@ Route::get('/profile/{user}/edit', [UserController::class, 'edit'])->middleware(
 Route::put('/profile/{user}', [UserController::class, 'update'])->middleware('auth');
 //Show Faq
 Route::get('/faq', [FaqController::class, 'show']);
+//Show About Page
+Route::get('/about', function () {
+    return view('about');
+});
 
 
 
