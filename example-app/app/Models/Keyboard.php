@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Keyboard extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','user_id','description', 'price', 'switches', 'details', 'image'];
+    protected $fillable = ['title','user_id','description', 'price', 'switches', 'details', 'image','publication'];
     public function scopeFilter($query, array $filters)
     {
         if($filters['search'] ?? false){

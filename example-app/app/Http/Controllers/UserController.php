@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Password;
 use App\Models\User;
 class UserController extends Controller
 {
@@ -19,6 +20,10 @@ class UserController extends Controller
             'user' => $user
         ]);
     }
+    public function reset()
+    {
+        return view('users.reset');
+    }
 
     //Show Edit Page
     public function edit(User $user)
@@ -29,41 +34,48 @@ class UserController extends Controller
     }
 
     //Update Profile
-    public function update(User $user, Request $request)
-    {
-        $formFields= $request->validate([
-            'name' => ['required','min:3' ,'max:27'],
-            'email' => ['email', 'required', Rule::unique('users', 'email')->ignore($user->id)],
-            'password' => 'required|min:6',
-            'profilepicture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
-            'bio' => 'nullable',
-            'birthdate' => 'nullable',
-        ]);
+    public function update(Request $request, User $user)
+{
+    // Validate the input fields
+    $formFields = $request->validate([
+        'name' => ['required', 'min:3', 'max:27'],
+        'email' => ['email', 'required', Rule::unique('users', 'email')->ignore($user->id)],
+        'password' => 'nullable|min:6|confirmed', // Validate password and confirmation
+        'profilepicture' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:8192',
+        'bio' => 'nullable',
+        'birthdate' => 'nullable',
+    ]);
 
-        if($request->hasFile('profilepicture')){
-            $profilepicture = $request->file('profilepicture');
-            $extension = $profilepicture->getClientOriginalExtension();
-            $filename = time() . '.' . $extension;
-            $profilepicture->move(public_path('images'), $filename);
-        } else {
-            
-            $filename = $user->profilepicture;
-            
-        
-        $formFields['password']=bcrypt($formFields['password']);
+    // Handle profile picture upload
+    if ($request->hasFile('profilepicture')) {
+        $profilepicture = $request->file('profilepicture');
+        $extension = $profilepicture->getClientOriginalExtension();
+        $filename = time() . '.' . $extension;
+        $profilepicture->move(public_path('images'), $filename);
+    } else {
+        // Use existing profile picture if no new one is uploaded
+        $filename = $user->profilepicture;
+    }
 
-        User::where('id', $user	->id)->update([ 
-            'name' => $formFields['name'],
-            'email' => $formFields['email'],
-            'password' => $formFields['password'],
-            'bio' => $formFields['bio'],
-            'birthdate' => $formFields['birthdate'],
-            'profilepicture' => $filename,
-            
-        ]);
-       return redirect('/')->with('message', 'Profile updated successfully!');
+    // Update the user
+    $user->name = $formFields['name'];
+    $user->email = $formFields['email'];
+    $user->bio = $formFields['bio'] ?? $user->bio;
+    $user->birthdate = $formFields['birthdate'] ?? $user->birthdate;
+    $user->profilepicture = $filename;
+
+    // Update password if provided
+    if ($request->filled('password')) {
+        $user->password = bcrypt($formFields['password']);
     }
-    }
+
+    $user->save(); // Save changes to the database
+
+    return redirect('/')->with('message', 'Profile updated successfully!');
+}
+
+
+
     //Create New User
     public function store(Request $request)
     {
@@ -121,5 +133,36 @@ class UserController extends Controller
         }
         return back()->withErrors(['email' => 'Invalid credentials'])->onlyInput('email');
     }
+    public function addAdmin(Request $request)
+{
+    // Validate the email input
+    $formFields = $request->validate([
+        'email' => ['email', 'required', 'exists:users,email'],
+    ]);
+
+    // Find the user by email
+    User::where('email', $formFields['email'])->update([
+            'role' => 'admin',  
+        ]);
+
+        return redirect('/')->with('message', 'User has been made an admin successfully!');
+   
+}
+public function resetPassword(Request $request)
+{
+    // Validate the email input
+    $formFields = $request->validate([
+        'email' => ['email', 'required', 'exists:users,email'],
+    ]);
+    $status = Password::sendResetLink(
+        $formFields
+    ); // Send password reset link
+    return $status === Password::RESET_LINK_SENT
+                ? back()->with('status', __($status))
+                : back()->withErrors(['email' => __($status)]); // Send error message if reset link could not be sent
+}
+
+
+    
 }
 

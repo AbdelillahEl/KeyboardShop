@@ -51,6 +51,7 @@
                     {{ $message }}
                 </p>
             @enderror
+            Rembember me <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
         </div>
 
        
@@ -60,15 +61,23 @@
                 type="submit"
                 class="bg-laravel text-white rounded py-2 px-4 hover:bg-black"
             >
-                Sign Up
+                Log In
             </button>
         </div>
 
         <div class="mt-8">
             <p>
-                Already have an account?
-                <a href="/login" class="text-laravel"
-                    >Login</a
+                No account yet?
+                <a href="/register" class="text-laravel"
+                    >Register</a
+                >
+            </p>
+        </div>
+        <div class="mt-8">
+            <p>
+                Forgot Password?
+                <a href="/reset" class="text-laravel"
+                    >Reset</a
                 >
             </p>
         </div>

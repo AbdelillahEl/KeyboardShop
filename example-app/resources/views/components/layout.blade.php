@@ -56,7 +56,7 @@
                 
                 @if(auth()->user()->role == \App\Models\User::ROLE_ADMIN)
                 <li>
-                    <a href="/keyboard/manage" class="hover:text-laravel"
+                    <a href="/manage/keyboard" class="hover:text-laravel"
                         ><i class="fa-solid fa-gear"></i>
                        Manage Keyboards and Contact Messages</a
                     >
@@ -103,9 +103,9 @@
         <p class="ml-2">Copyright &copy; 2024, All Rights reserved</p>
 
         <a
-            href="/keyboard/create"
+            href="/contact"
             class="absolute top-1/3 right-10 bg-black text-white py-2 px-5"
-            >Create Post</a
+            >Contact us</a
         >
     </footer>
     <x-flash-message />
